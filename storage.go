@@ -300,7 +300,7 @@ func (f *file) UploadOrUpdate(path string, data io.Reader, update bool, opts *Fi
 	req.Header.Set("content-type", mergedOpts.ContentType)
 	req.Header.Set("x-upsert", strconv.FormatBool(mergedOpts.Upsert))
 	if !update {
-		req.Header.Set("content-type", defaultFileContent)
+		req.Header.Set("content-type", mergedOpts.ContentType)
 	}
 
 	res, err = client.Do(req)
